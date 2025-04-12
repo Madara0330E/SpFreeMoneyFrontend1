@@ -23,7 +23,7 @@ export default function Home() {
   const [authToken, setAuthToken] = useState<string>("");
 
   useEffect(() => {
-    const spm = new SPWMini("d677f363-a968-4989-8753-ae52757de598");
+    const spm = new SPWMini("DpxcJ/9UHM4i17AUWW3A1TfU2DcDNNN4");
 
     spm.on("initResponse", async (user) => {
       try {
@@ -101,7 +101,7 @@ export default function Home() {
 
       if (res.ok) {
         const donationData = await res.json();
-        const spm = new SPWMini("d677f363-a968-4989-8753-ae52757de598");
+        const spm = new SPWMini("DpxcJ/9UHM4i17AUWW3A1TfU2DcDNNN4");
         spm.openPayment(donationData.donate.code);
       } else {
         const err = await res.text();
