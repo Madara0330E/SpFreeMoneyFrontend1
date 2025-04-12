@@ -6,6 +6,7 @@ import { Campaign } from "@/components/Campaign";
 import { Hero } from "@/components/Hero";
 import Statistics from "@/components/Statistics";
 import TopDonators from "@/components/TopDonators";
+import TopConsumers from "@/components/TopConsumers";
 
 export default function Home() {
   const { user } = useSPWMini();
@@ -81,8 +82,9 @@ export default function Home() {
         <Hero />
         <Statistics />
       </div>
-      <div className="mt-[200px]">
+      <div className="flex justify-between w-ful gap-[16px] mt-[200px] ">
         <TopDonators />
+        <TopConsumers />
       </div>
 
       <h2 className="text-2xl font-bold mb-4 mt-8">Активные сборы</h2>

@@ -91,7 +91,11 @@ export default function TopDonators() {
             </svg>
           </button>
         </div>
+        
       </div>
+      <span className="text-[#6563EE] text-[32px] mt-4 font-raleway font-semibold leading-normal [font-variant-numeric:lining-nums_proportional-nums]">
+        список потребителей
+      </span>
     </div>
   );
 }
