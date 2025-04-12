@@ -6,7 +6,7 @@ let spwmini: SPWMini | null = null;
 
 // Инициализируем SPWMini только на клиенте
 if (typeof window !== "undefined") {
-  spwmini = new SPWMini("msDhTmnsZU7udVHMWWHKN6n464pbYdIo", {
+  spwmini = new SPWMini("qkZtg2sqRZmvlKogEcThl0zrbYwc5QqI", {
     autoinit: false, // Отключаем автоинициализацию
     customFetch: fetch,
   });
