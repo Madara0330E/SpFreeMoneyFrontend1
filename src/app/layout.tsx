@@ -1,11 +1,12 @@
 import { SPWMiniProvider } from "@/components/SPWMiniProvider";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Raleway } from "next/font/google";
+import { Header } from "@/components/Header";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+const raleway = Raleway({
+  subsets: ["latin", "cyrillic"],
+  variable: "--font-raleway",
 });
 
 export const metadata: Metadata = {
@@ -29,8 +30,11 @@ export default function RootLayout({
           content="frame-ancestors https://spworlds.ru;"
         />
       </head>
-      <body className={`${inter.variable} antialiased`}>
-        <SPWMiniProvider>{children}</SPWMiniProvider>
+      <body className={`${raleway.variable} antialiased`}>
+        <SPWMiniProvider>
+          <Header />
+          {children}
+        </SPWMiniProvider>
       </body>
     </html>
   );

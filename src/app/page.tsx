@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import { useSPWMini } from "@/components/SPWMiniProvider";
 import { Campaign } from "@/components/Campaign";
+import { Hero } from "@/components/Hero";
+import Statistics from "@/components/Statistics";
+import TopDonators from "@/components/TopDonators";
 
 export default function Home() {
   const { user } = useSPWMini();
@@ -68,21 +71,18 @@ export default function Home() {
     fetchData();
   }, [user]);
 
-  if (!user) {
-    return <div className="p-4">Загрузка...</div>;
-  }
-
-  if (isLoading) {
-    return <div className="p-4">Загрузка...</div>;
-  }
-
   if (error) {
     return <div className="p-4 text-red-500">{error}</div>;
   }
 
   return (
-    <main className="min-h-screen bg-[#0f0f0f] text-white p-4">
-      <h2 className="text-2xl font-bold mb-4">Активные сборы</h2>
+    <main className="min-h-screen bg-[#0f0f0f] text-white p-20">
+      <div className="flex justify-between w-ful gap-[16px] items-center">
+        <Hero />
+        <Statistics />
+      </div>
+      <TopDonators />
+      <h2 className="text-2xl font-bold mb-4 mt-8">Активные сборы</h2>
       <div className="space-y-4">
         {campaigns.map((campaign) => (
           <Campaign key={campaign.id} {...campaign} authToken={authToken} />

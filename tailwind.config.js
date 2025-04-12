@@ -12,7 +12,7 @@ module.exports = {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        sans: ["var(--font-inter)"],
+        raleway: ["var(--font-raleway)", "sans-serif"],
       },
     },
   },

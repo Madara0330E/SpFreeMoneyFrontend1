@@ -22,8 +22,7 @@
 }
 
 body {
-  @apply bg-background text-foreground;
-  font-family: Arial, sans-serif;
+  @apply bg-background text-foreground font-raleway;
   margin: 0;
   padding: 0;
 }
