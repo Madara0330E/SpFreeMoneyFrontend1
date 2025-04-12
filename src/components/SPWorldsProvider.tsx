@@ -1,6 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, createContext } from "react";
 import SPWMini from "spwmini/client";
 import { SPWORLDS_CONFIG } from "../config/spworlds";
+
+export const SPWorldsContext = createContext<{
+  spm: SPWMini | null;
+  user: any;
+}>({
+  spm: null,
+  user: null,
+});
 
 export const SPWorldsProvider = ({
   children,
@@ -40,11 +48,3 @@ export const SPWorldsProvider = ({
     </SPWorldsContext.Provider>
   );
 };
-
-export const SPWorldsContext = React.createContext<{
-  spm: SPWMini | null;
-  user: any;
-}>({
-  spm: null,
-  user: null,
-});
