@@ -1,7 +1,4 @@
-"use client";
-
-import { useEffect } from "react";
-import { initSPWorlds } from "@/lib/spworlds";
+import ClientLayout from "./ClientLayout";
 
 export const metadata = {
   title: "Next.js",
@@ -13,10 +10,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  useEffect(() => {
-    initSPWorlds();
-  }, []);
-
   return (
     <html lang="en">
       <head>
@@ -25,7 +18,9 @@ export default function RootLayout({
           content="frame-ancestors https://spworlds.ru;"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <ClientLayout>{children}</ClientLayout>
+      </body>
     </html>
   );
 }
