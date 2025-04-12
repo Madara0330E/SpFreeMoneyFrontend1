@@ -105,38 +105,43 @@ export default function TopDonators() {
             </div>
 
             <div className="h-[1px] self-stretch bg-white opacity-10"></div>
-            <div className="flex justify-between w-full items-center">
-              <div className="div">
+            <div className="flex justify-between w-full gap-3 items-center max-w-[894px]">
+              <div className="flex flex-col max-w-[790px] gap-3  w-full">
                 <div className="flex items-center gap-3 justify-between w-full">
-                  <div className="flex items-center gap-3 w-full ">
-                    <span className="text-[#6563EE] text-[24px] font-[600] leading-normal font-raleway">
-                      {donate.message || "Без сообщения"}
-                    </span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="5"
-                      height="6"
-                      viewBox="0 0 5 6"
-                      fill="none"
-                    >
-                      <path
-                        d="M5 3C5 3.45455 4.89002 3.87542 4.67005 4.26263C4.45008 4.633 4.14552 4.93603 3.75634 5.17172C3.38409 5.39057 2.96108 5.5 2.48731 5.5C2.04738 5.5 1.63283 5.39057 1.24365 5.17172C0.871404 4.93603 0.566836 4.633 0.329949 4.26263C0.109983 3.87542 0 3.44613 0 2.97475C0 2.53704 0.109983 2.133 0.329949 1.76263C0.566836 1.37542 0.871404 1.07239 1.24365 0.853535C1.63283 0.617845 2.04738 0.5 2.48731 0.5C2.96108 0.5 3.38409 0.617845 3.75634 0.853535C4.14552 1.07239 4.45008 1.37542 4.67005 1.76263C4.89002 2.133 5 2.54545 5 3Z"
-                        fill="white"
-                      />
-                    </svg>
-                    <span className="text-white text-[20px] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
-                      {new Date(donate.createdDateUtc).toLocaleString("ru-RU")}
-                    </span>
+                  <div className="flex items-center gap-3 w-full justify-between ">
+                    <div className="flex items-center gap-3 w-full">
+                      <span className="text-[#6563EE] text-[24px] font-[600] leading-normal font-raleway">
+                        {donate.message || "Без сообщения"}
+                      </span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="5"
+                        height="6"
+                        viewBox="0 0 5 6"
+                        fill="none"
+                      >
+                        <path
+                          d="M5 3C5 3.45455 4.89002 3.87542 4.67005 4.26263C4.45008 4.633 4.14552 4.93603 3.75634 5.17172C3.38409 5.39057 2.96108 5.5 2.48731 5.5C2.04738 5.5 1.63283 5.39057 1.24365 5.17172C0.871404 4.93603 0.566836 4.633 0.329949 4.26263C0.109983 3.87542 0 3.44613 0 2.97475C0 2.53704 0.109983 2.133 0.329949 1.76263C0.566836 1.37542 0.871404 1.07239 1.24365 0.853535C1.63283 0.617845 2.04738 0.5 2.48731 0.5C2.96108 0.5 3.38409 0.617845 3.75634 0.853535C4.14552 1.07239 4.45008 1.37542 4.67005 1.76263C4.89002 2.133 5 2.54545 5 3Z"
+                          fill="white"
+                        />
+                      </svg>
+                      <span className="text-white text-[20px] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                        {new Date(donate.createdDateUtc).toLocaleString(
+                          "ru-RU"
+                        )}
+                      </span>
+                    </div>
+                    <div className="text-white w-[160px] text-[24px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums] text-right pr-0">
+                      {donate.amount} АР
+                    </div>
                   </div>
                 </div>
                 <div className="text-white text-[24px] font-[600] leading-normal w-full font-raleway overflow-hidden text-ellipsis whitespace-nowrap max-w-[866px]">
                   {donate.message || "Без сообщения"}
                 </div>
               </div>
-              <div className="flex flex-col items-end">
-                <div className="text-white w-[160px] text-[24px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums] text-right pr-0">
-                  {donate.amount} АР
-                </div>
+
+              <div className="flex flex-col items-end justify-end">
                 <button className="ml-0">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
