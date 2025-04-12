@@ -3,8 +3,7 @@
 import { useSPWMini } from "@/components/SPWMiniProvider";
 
 export default function Home() {
-  const { user, isLoading, error, validateUser, openURL, openPayment } =
-    useSPWMini();
+  const { user, isLoading, error, validateUser, openURL } = useSPWMini();
 
   if (isLoading) {
     return <div>Загрузка...</div>;

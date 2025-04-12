@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 import spwmini from "@/config/spwmini";
-import type { User } from "spwmini/types";
+import type { User, UserData } from "spwmini/types";
 
 interface SPWMiniContextType {
   user: User | null;
@@ -21,26 +21,38 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    spwmini.on("initResponse", (userData) => {
+    if (!spwmini) {
+      setError("SPWMini не инициализирован");
+      setIsLoading(false);
+      return;
+    }
+
+    const handleInitResponse = (userData: User) => {
       setUser(userData);
       setIsLoading(false);
-    });
+    };
 
-    spwmini.on("initError", (errorMessage) => {
+    const handleInitError = (errorMessage: string) => {
       setError(errorMessage);
       setIsLoading(false);
-    });
+    };
 
-    spwmini.on("ready", () => {
+    const handleReady = () => {
       setIsLoading(false);
-    });
+    };
+
+    spwmini.on("initResponse", handleInitResponse);
+    spwmini.on("initError", handleInitError);
+    spwmini.on("ready", handleReady);
 
     return () => {
-      spwmini.dispose();
+      spwmini?.dispose();
     };
   }, []);
 
   const validateUser = async (url: string) => {
+    if (!user) return false;
+
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -48,11 +60,11 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          accountId: user?.accountId,
-          discordId: user?.discordId,
-          minecraftUUID: user?.minecraftUUID,
-          username: user?.username,
-          hash: user?.hash,
+          accountId: user.accountId,
+          discordId: user.discordId,
+          minecraftUUID: user.minecraftUUID,
+          username: user.username,
+          hash: (user as UserData)?.hash,
         }),
       });
 
@@ -70,11 +82,11 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
   };
 
   const openURL = (url: string) => {
-    spwmini.openURL(url);
+    spwmini?.openURL(url);
   };
 
   const openPayment = (code: string) => {
-    spwmini.openPayment(code);
+    spwmini?.openPayment(code);
   };
 
   return (
