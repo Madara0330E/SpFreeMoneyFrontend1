@@ -9,7 +9,6 @@ if (typeof window !== "undefined") {
   spwmini = new SPWMini("qkZtg2sqRZmvlKogEcThl0zrbYwc5QqI", {
     autoinit: false, // Отключаем автоинициализацию
     customFetch: fetch,
-    redirectUri: "#MINIAPP",
   });
 
   // Обработчики событий
