@@ -1,7 +1,0 @@
-export const SPWORLDS_CONFIG = {
-  APP_ID:
-    process.env.NEXT_PUBLIC_SPWORLDS_APP_ID ||
-    "DpxcJ/9UHM4i17AUWW3A1TfU2DcDNNN4",
-  APP_TOKEN: process.env.SPWORLDS_TOKEN || "JzOc8FAOdW1xKK1PyGtXh07oSxUszdcl",
-  REDIRECT_URI: "#MINIAPP",
-};
