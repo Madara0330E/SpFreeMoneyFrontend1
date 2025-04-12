@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export",
   images: {
     domains: ["cdn.jsdelivr.net"],
+    unoptimized: true,
   },
   async headers() {
     return [
