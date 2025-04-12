@@ -1,7 +1,8 @@
+import type { AppProps } from "next/app";
 import { SPWorldsProvider } from "../components/SPWorldsProvider";
 import Head from "next/head";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
