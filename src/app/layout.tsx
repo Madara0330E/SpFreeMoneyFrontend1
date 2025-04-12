@@ -1,4 +1,4 @@
-import ClientLayout from "./ClientLayout";
+import ClientLayout from "./components/ClientLayout";
 
 export const metadata = {
   title: "Next.js",

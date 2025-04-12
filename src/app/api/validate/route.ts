@@ -1,12 +1,13 @@
-import { validate } from "spwmini/middleware";
+import { checkUser } from "spwmini/middleware";
 import { NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
-const handler = validate(process.env.SPWORLDS_TOKEN || "");
-
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   try {
-    const result = await handler(req);
-    return NextResponse.json({ valid: result === 1 });
+    const body = await req.json();
+    const isValid = checkUser(body.user, process.env.SPWORLDS_TOKEN || "");
+
+    return NextResponse.json({ valid: isValid });
   } catch (error) {
     return NextResponse.json(
       { valid: false, error: "Invalid user" },

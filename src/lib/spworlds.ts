@@ -29,7 +29,15 @@ export const initSPWorlds = () => {
 
 export const validateUser = async () => {
   try {
-    return await spw.validateUser("/api/validate");
+    const response = await fetch("/api/validate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ user: spw.user }),
+    });
+    const data = await response.json();
+    return data.valid;
   } catch (error) {
     console.error("User validation error:", error);
     return false;
