@@ -15,6 +15,10 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value: "frame-ancestors https://spworlds.ru;",
           },
+          {
+            key: "X-Frame-Options",
+            value: "ALLOW-FROM https://spworlds.ru",
+          },
         ],
       },
     ];
