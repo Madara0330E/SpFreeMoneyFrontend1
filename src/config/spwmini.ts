@@ -24,11 +24,6 @@ if (typeof window !== "undefined") {
     console.log("Приложение готово к работе");
   });
 
-  // Добавляем обработчик для отладки
-  spwmini.on("error", (error) => {
-    console.error("Ошибка SPWMini:", error);
-  });
-
   // Инициализируем вручную после создания
   try {
     spwmini.initialize();
