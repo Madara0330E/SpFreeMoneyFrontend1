@@ -29,8 +29,10 @@ export default async function handler(
     }
 
     res.status(200).json(data);
-  } catch (error) {
+  } catch (error: any) {
     console.error("Ошибка при создании платежа:", error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({
+      message: error instanceof Error ? error.message : "Неизвестная ошибка",
+    });
   }
 }
