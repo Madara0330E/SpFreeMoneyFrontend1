@@ -81,7 +81,10 @@ export default function Home() {
         <Hero />
         <Statistics />
       </div>
-      <TopDonators />
+      <div className="mt-[200px]">
+        <TopDonators />
+      </div>
+
       <h2 className="text-2xl font-bold mb-4 mt-8">Активные сборы</h2>
       <div className="space-y-4">
         {campaigns.map((campaign) => (
