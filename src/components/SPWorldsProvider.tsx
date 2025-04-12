@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState, createContext } from "react";
 import SPWMini from "spwmini/client";
 import { SPWORLDS_CONFIG } from "../config/spworlds";
