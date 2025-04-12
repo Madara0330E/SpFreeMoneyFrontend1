@@ -1,6 +1,10 @@
 import { SPWORLDS_CONFIG } from "../../config/spworlds";
+import type { NextApiRequest, NextApiResponse } from "next";
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   try {
     const response = await fetch(
       "https://spworlds.ru/api/public/transactions",
