@@ -50,35 +50,35 @@ export default function TopDonators() {
   }
 
   return (
-    <div className="w-full max-w-[942.5px] flex flex-col items-center">
-      <p className="text-right text-[42px] font-[600] leading-normal mb-4 font-raleway text-white">
+    <div className="w-full max-w-[49.09vw] flex flex-col items-center">
+      <p className="text-right text-[2.19vw] font-[600] leading-normal mb-[0.21vw] font-raleway text-white">
         Топ донатеров
       </p>
       <div className="w-full flex flex-col gap-4">
         {donates.slice(0, 3).map((donate, index) => (
           <div
             key={donate.id.timestamp}
-            className={`w-full flex flex-col gap-4 p-6 items-start self-stretch rounded-2xl ${
+            className={`w-full flex flex-col gap-4 p-[1.25vw] items-start self-stretch rounded-[0.83vw] ${
               index === 0
                 ? "border border-[#6563EE] bg-[radial-gradient(539.32%_212.31%_at_91.61%_10.09%,rgba(101,99,238,0.4)_0%,rgba(101,99,238,0.16)_41.83%,rgba(101,99,238,0.4)_100%)]"
-                : "mt-4 bg-[rgba(255,255,255,0.05)]"
+                : "mt-[0.21vw] bg-[rgba(255,255,255,0.05)]"
             }`}
           >
             <div className="justify-between flex items-center w-full">
               <div className="flex items-center gap-3 w-full">
-                <span className="text-white text-center text-[32px] font-[600] leading-normal font-raleway font-numeric [font-variant-numeric:lining-nums_proportional-nums]">
+                <span className="text-white text-center text-[1.67vw] font-[600] leading-normal font-raleway font-numeric [font-variant-numeric:lining-nums_proportional-nums]">
                   #{index + 1}
                 </span>
                 <div className="flex items-center gap-3 w-full">
-                  <img src="" alt="" className="h-[70px] w-[70px]" />
-                  <span className="text-white text-[32px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                  <img src="" alt="" className="h-[3.65vw] w-[3.65vw]" />
+                  <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                     {donate.isAnonymous ? "Аноним" : "Пользователь"}
                   </span>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 w-full justify-end">
-                <span className="text-white text-center text-[32px] font-[600] leading-normal font-raleway font-numeric [font-variant-numeric:lining-nums_proportional-nums]">
+                <span className="text-white text-center text-[1.67vw] font-[600] leading-normal font-raleway font-numeric [font-variant-numeric:lining-nums_proportional-nums]">
                   {
                     donates.filter(
                       (d) => d.userId.timestamp === donate.userId.timestamp
@@ -88,8 +88,8 @@ export default function TopDonators() {
                 </span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="5"
-                  height="6"
+                  width="0.26vw"
+                  height="0.31vw"
                   viewBox="0 0 5 6"
                   fill="none"
                 >
@@ -98,25 +98,25 @@ export default function TopDonators() {
                     fill="white"
                   />
                 </svg>
-                <span className="text-white text-center text-[32px] font-[600] leading-normal font-raleway font-numeric [font-variant-numeric:lining-nums_proportional-nums]">
+                <span className="text-white text-center text-[1.67vw] font-[600] leading-normal font-raleway font-numeric [font-variant-numeric:lining-nums_proportional-nums]">
                   {donate.amount} АР
                 </span>
               </div>
             </div>
 
-            <div className="h-[1px] self-stretch bg-white opacity-10"></div>
-            <div className="flex justify-between w-full gap-3 items-center max-w-[894px]">
-              <div className="flex flex-col max-w-[790px] gap-3  w-full">
+            <div className="h-[0.05vw] self-stretch bg-white opacity-10"></div>
+            <div className="flex justify-between w-full gap-3 items-center max-w-[46.56vw]">
+              <div className="flex flex-col max-w-[41.15vw] gap-3 w-full">
                 <div className="flex items-center gap-3 justify-between w-full">
-                  <div className="flex items-center gap-3 w-full justify-between ">
+                  <div className="flex items-center gap-3 w-full justify-between">
                     <div className="flex items-center gap-3 w-full">
-                      <span className="text-[#6563EE] text-[24px] font-[600] leading-normal font-raleway">
+                      <span className="text-[#6563EE] text-[1.25vw] font-[600] leading-normal font-raleway">
                         {donate.message || "Без сообщения"}
                       </span>
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
-                        width="5"
-                        height="6"
+                        width="0.26vw"
+                        height="0.31vw"
                         viewBox="0 0 5 6"
                         fill="none"
                       >
@@ -125,18 +125,16 @@ export default function TopDonators() {
                           fill="white"
                         />
                       </svg>
-                      <span className="text-white text-[20px] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
-                        {new Date(donate.createdDateUtc).toLocaleString(
-                          "ru-RU"
-                        )}
+                      <span className="text-white text-[1.04vw] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                        {new Date(donate.createdDateUtc).toLocaleString("ru-RU")}
                       </span>
                     </div>
-                    <div className="text-white w-[160px] text-[24px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums] text-right pr-0">
+                    <div className="text-white w-[8.33vw] text-[1.25vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums] text-right pr-0">
                       {donate.amount} АР
                     </div>
                   </div>
                 </div>
-                <div className="text-white text-[24px] font-[600] leading-normal w-full font-raleway overflow-hidden text-ellipsis whitespace-nowrap max-w-[866px]">
+                <div className="text-white text-[1.25vw] font-[600] leading-normal w-full font-raleway overflow-hidden text-ellipsis whitespace-nowrap max-w-[45.1vw]">
                   {donate.message || "Без сообщения"}
                 </div>
               </div>
@@ -145,8 +143,8 @@ export default function TopDonators() {
                 <button className="ml-0">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="13"
-                    height="22"
+                    width="0.68vw"
+                    height="1.15vw"
                     viewBox="0 0 13 22"
                     fill="none"
                   >
@@ -161,7 +159,7 @@ export default function TopDonators() {
           </div>
         ))}
       </div>
-      <span className="text-[#6563EE] text-[32px] mt-4 font-raleway font-semibold leading-normal [font-variant-numeric:lining-nums_proportional-nums]">
+      <span className="text-[#6563EE] text-[1.67vw] mt-[0.21vw] font-raleway font-semibold leading-normal [font-variant-numeric:lining-nums_proportional-nums]">
         список потребителей
       </span>
     </div>

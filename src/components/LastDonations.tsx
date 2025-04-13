@@ -91,34 +91,34 @@ const LastDonations: React.FC = () => {
   const displayedDonates = donates.slice(0, 6);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-[10px]">
       <div className="w-full flex justify-center items-center">
-        <p className="text-right text-[42px] font-[600] leading-normal mb-4 font-raleway text-white">
+        <p className="text-right text-[2.19vw] font-[600] leading-normal mb-4 font-raleway text-white">
           Последние донаты
         </p>
       </div>
 
       {loading ? (
         <div className="w-full flex justify-center items-center">
-          <p className="text-white text-[24px]">Загрузка...</p>
+          <p className="text-white text-[1.25vw]">Загрузка...</p>
         </div>
       ) : error ? (
         <div className="w-full flex justify-center items-center">
-          <p className="text-red-500 text-[24px]">{error}</p>
+          <p className="text-red-500 text-[1.25vw]">{error}</p>
         </div>
       ) : displayedDonates.length === 0 ? (
         <div className="w-full flex justify-center items-center">
-          <p className="text-white text-[24px]">Нет донатов</p>
+          <p className="text-white text-[1.25vw]">Нет донатов</p>
         </div>
       ) : (
-        <div className="w-full flex justify-center gap-4 items-center">
-          <div className="flex-col w-full flex gap-4 max-w-[628.33px] items-center">
+        <div className="w-full flex justify-center gap-[10px] items-center">
+          <div className="flex-col w-full flex gap-[10px] max-w-[32.73vw] items-center">
             {displayedDonates
               .filter((_, index) => index % 3 === 0)
               .map((donate, index) => (
                 <div
                   key={donate.id.timestamp}
-                  className={`flex max-w-[628.33px] w-full p-6 flex-col items-start gap-[10px] self-stretch rounded-[16px] ${
+                  className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[10px] self-stretch rounded-[0.83vw] ${
                     index % 2 === 0
                       ? "bg-white/5"
                       : "border border-[#6563EE] bg-[radial-gradient(539.32%_212.31%_at_91.61%_10.09%,_rgba(101,99,238,0.4)_0%,_rgba(101,99,238,0.16)_41.83%,_rgba(101,99,238,0.4)_100%)]"
@@ -126,22 +126,28 @@ const LastDonations: React.FC = () => {
                 >
                   <div className="w-full flex justify-between items-center">
                     <div className="flex items-center gap-3 justify-center">
-                      <img src="" alt="" className="h-[70px] w-[70px]" />
-                      <span className="text-white text-[32px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                      <img src="" alt="" className="h-[3.65vw] w-[3.65vw]" />
+                      <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {donate.isAnonymous ? "Аноним" : "fupir"}
                       </span>
-                      <div className="text-white text-[20px] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                      <div className="text-white text-[1.04vw] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {(() => {
                           const formattedTime = formatDonationTime(
                             donate.createdDateUtc
                           );
                           if (typeof formattedTime === "string") {
-                            return <p>{formattedTime}</p>;
+                            return (
+                              <p className="text-[1.04vw]">{formattedTime}</p>
+                            );
                           } else {
                             return (
                               <>
-                                <p>{formattedTime.date}</p>
-                                <p>{formattedTime.time}</p>
+                                <p className="text-[1.04vw]">
+                                  {formattedTime.date}
+                                </p>
+                                <p className="text-[1.04vw]">
+                                  {formattedTime.time}
+                                </p>
                               </>
                             );
                           }
@@ -149,24 +155,24 @@ const LastDonations: React.FC = () => {
                       </div>
                     </div>
                     <div className="div">
-                      <span className="text-white text-[32px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                      <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {donate.amount} АР
                       </span>
                     </div>
                   </div>
-                  <div className="text-white text-[24px] font-[600] leading-normal font-raleway">
+                  <div className="text-white text-[1.25vw] font-[600] leading-normal font-raleway">
                     {donate.message}
                   </div>
                 </div>
               ))}
           </div>
-          <div className="flex-col w-full flex max-w-[628.33px] gap-4 items-center">
+          <div className="flex-col w-full flex max-w-[32.73vw] gap-[10px] items-center">
             {displayedDonates
               .filter((_, index) => index % 3 === 1)
               .map((donate, index) => (
                 <div
                   key={donate.id.timestamp}
-                  className={`flex max-w-[628.33px] w-full p-6 flex-col items-start gap-[10px] self-stretch rounded-[16px] ${
+                  className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[10px] self-stretch rounded-[0.83vw] ${
                     index % 2 === 0
                       ? "border border-[#6563EE] bg-[radial-gradient(539.32%_212.31%_at_91.61%_10.09%,_rgba(101,99,238,0.4)_0%,_rgba(101,99,238,0.16)_41.83%,_rgba(101,99,238,0.4)_100%)]"
                       : "bg-white/5"
@@ -174,22 +180,28 @@ const LastDonations: React.FC = () => {
                 >
                   <div className="w-full flex justify-between items-center">
                     <div className="flex items-center gap-3 justify-center">
-                      <img src="" alt="" className="h-[70px] w-[70px]" />
-                      <span className="text-white text-[32px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                      <img src="" alt="" className="h-[3.65vw] w-[3.65vw]" />
+                      <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {donate.isAnonymous ? "Аноним" : "fupir"}
                       </span>
-                      <div className="text-white text-[20px] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                      <div className="text-white text-[1.04vw] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {(() => {
                           const formattedTime = formatDonationTime(
                             donate.createdDateUtc
                           );
                           if (typeof formattedTime === "string") {
-                            return <p>{formattedTime}</p>;
+                            return (
+                              <p className="text-[1.04vw]">{formattedTime}</p>
+                            );
                           } else {
                             return (
                               <>
-                                <p>{formattedTime.date}</p>
-                                <p>{formattedTime.time}</p>
+                                <p className="text-[1.04vw]">
+                                  {formattedTime.date}
+                                </p>
+                                <p className="text-[1.04vw]">
+                                  {formattedTime.time}
+                                </p>
                               </>
                             );
                           }
@@ -197,24 +209,24 @@ const LastDonations: React.FC = () => {
                       </div>
                     </div>
                     <div className="div">
-                      <span className="text-white text-[32px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                      <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {donate.amount} АР
                       </span>
                     </div>
                   </div>
-                  <div className="text-white text-[24px] font-[600] leading-normal font-raleway">
+                  <div className="text-white text-[1.25vw] font-[600] leading-normal font-raleway">
                     {donate.message}
                   </div>
                 </div>
               ))}
           </div>
-          <div className="flex-col w-full max-w-[628.33px] flex gap-4 items-center">
+          <div className="flex-col w-full max-w-[32.73vw] flex gap-4 items-center">
             {displayedDonates
               .filter((_, index) => index % 3 === 2)
               .map((donate, index) => (
                 <div
                   key={donate.id.timestamp}
-                  className={`flex max-w-[628.33px] w-full p-6 flex-col items-start gap-[10px] self-stretch rounded-[16px] ${
+                  className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[10px] self-stretch rounded-[0.83vw] ${
                     index % 2 === 0
                       ? "bg-white/5"
                       : "border border-[#6563EE] bg-[radial-gradient(539.32%_212.31%_at_91.61%_10.09%,_rgba(101,99,238,0.4)_0%,_rgba(101,99,238,0.16)_41.83%,_rgba(101,99,238,0.4)_100%)]"
@@ -222,22 +234,28 @@ const LastDonations: React.FC = () => {
                 >
                   <div className="w-full flex justify-between items-center">
                     <div className="flex items-center gap-3 justify-center">
-                      <img src="" alt="" className="h-[70px] w-[70px]" />
-                      <span className="text-white text-[32px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                      <img src="" alt="" className="h-[3.65vw] w-[3.65vw]" />
+                      <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {donate.isAnonymous ? "Аноним" : "fupir"}
                       </span>
-                      <div className="text-white text-[20px] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                      <div className="text-white text-[1.04vw] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {(() => {
                           const formattedTime = formatDonationTime(
                             donate.createdDateUtc
                           );
                           if (typeof formattedTime === "string") {
-                            return <p>{formattedTime}</p>;
+                            return (
+                              <p className="text-[1.04vw]">{formattedTime}</p>
+                            );
                           } else {
                             return (
                               <>
-                                <p>{formattedTime.date}</p>
-                                <p>{formattedTime.time}</p>
+                                <p className="text-[1.04vw]">
+                                  {formattedTime.date}
+                                </p>
+                                <p className="text-[1.04vw]">
+                                  {formattedTime.time}
+                                </p>
                               </>
                             );
                           }
@@ -245,12 +263,12 @@ const LastDonations: React.FC = () => {
                       </div>
                     </div>
                     <div className="div">
-                      <span className="text-white text-[32px] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
+                      <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {donate.amount} АР
                       </span>
                     </div>
                   </div>
-                  <div className="text-white text-[24px] font-[600] leading-normal font-raleway">
+                  <div className="text-white text-[1.25vw] font-[600] leading-normal font-raleway">
                     {donate.message}
                   </div>
                 </div>
@@ -260,7 +278,7 @@ const LastDonations: React.FC = () => {
       )}
 
       <div className="w-full flex justify-center items-center">
-        <span className="text-[#6563EE] text-[32px] mt-4 font-raleway font-semibold leading-normal [font-variant-numeric:lining-nums_proportional-nums]">
+        <span className="text-[#6563EE] text-[1.67vw] mt-4 font-raleway font-semibold leading-normal [font-variant-numeric:lining-nums_proportional-nums]">
           вся история
         </span>
       </div>
