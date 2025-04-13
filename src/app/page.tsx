@@ -7,7 +7,7 @@ import { Hero } from "@/components/Hero";
 import Statistics from "@/components/Statistics";
 import TopDonators from "@/components/TopDonators";
 import TopConsumers from "@/components/TopConsumers";
-
+import LastDonations from "@/components/LastDonations";
 export default function Home() {
   const { user } = useSPWMini();
   const [authToken, setAuthToken] = useState<string>("");
@@ -86,6 +86,7 @@ export default function Home() {
         <TopDonators />
         <TopConsumers />
       </div>
+      <LastDonations />
 
       <h2 className="text-2xl font-bold mb-4 mt-8">Активные сборы</h2>
       <div className="space-y-4">
