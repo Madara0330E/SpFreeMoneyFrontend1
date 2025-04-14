@@ -70,7 +70,7 @@ export default function TopDonators() {
                   <img
                     src={donate.user.avatarUrl}
                     alt={donate.user.username}
-                    className="h-[3.65vw] w-[3.65vw] rounded-full"
+                    className="h-[3.65vw] w-[3.65vw]"
                   />
                   <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                     {donate.user.username}
