@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from "react";
 
+interface User {
+  id: string;
+  username: string;
+  avatarUrl: string;
+}
+
 interface Donate {
-  id: {
-    timestamp: number;
-    creationTime: string;
-  };
-  userId: {
-    timestamp: number;
-    creationTime: string;
-  };
+  id: string;
   amount: number;
   message: string;
-  isAnonymous: boolean;
-  paymentCode: string | null;
-  paidDateUtc: string | null;
-  createdDateUtc: string;
+  user: User;
+  createdAt: string;
 }
 
 interface DonatesResponse {
@@ -42,8 +39,7 @@ const LastDonations: React.FC = () => {
         // Сортируем донаты по дате создания (новые первыми)
         const sortedDonates = [...data.donates].sort(
           (a, b) =>
-            new Date(b.createdDateUtc).getTime() -
-            new Date(a.createdDateUtc).getTime()
+            new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
         );
         setDonates(sortedDonates);
         setError(null);
@@ -117,7 +113,7 @@ const LastDonations: React.FC = () => {
               .filter((_, index) => index % 3 === 0)
               .map((donate, index) => (
                 <div
-                  key={donate.id.timestamp}
+                  key={donate.id}
                   className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[10px] self-stretch rounded-[0.83vw] ${
                     index % 2 === 0
                       ? "bg-white/5"
@@ -126,14 +122,18 @@ const LastDonations: React.FC = () => {
                 >
                   <div className="w-full flex justify-between items-center">
                     <div className="flex items-center gap-3 justify-center">
-                      <img src="" alt="" className="h-[3.65vw] w-[3.65vw]" />
+                      <img
+                        src={donate.user.avatarUrl}
+                        alt={donate.user.username}
+                        className="h-[3.65vw] w-[3.65vw] rounded-full"
+                      />
                       <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
-                        {donate.isAnonymous ? "Аноним" : "fupir"}
+                        {donate.user.username}
                       </span>
                       <div className="text-white text-[1.04vw] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {(() => {
                           const formattedTime = formatDonationTime(
-                            donate.createdDateUtc
+                            donate.createdAt
                           );
                           if (typeof formattedTime === "string") {
                             return (
@@ -171,7 +171,7 @@ const LastDonations: React.FC = () => {
               .filter((_, index) => index % 3 === 1)
               .map((donate, index) => (
                 <div
-                  key={donate.id.timestamp}
+                  key={donate.id}
                   className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[10px] self-stretch rounded-[0.83vw] ${
                     index % 2 === 0
                       ? "border border-[#6563EE] bg-[radial-gradient(539.32%_212.31%_at_91.61%_10.09%,_rgba(101,99,238,0.4)_0%,_rgba(101,99,238,0.16)_41.83%,_rgba(101,99,238,0.4)_100%)]"
@@ -180,14 +180,18 @@ const LastDonations: React.FC = () => {
                 >
                   <div className="w-full flex justify-between items-center">
                     <div className="flex items-center gap-3 justify-center">
-                      <img src="" alt="" className="h-[3.65vw] w-[3.65vw]" />
+                      <img
+                        src={donate.user.avatarUrl}
+                        alt={donate.user.username}
+                        className="h-[3.65vw] w-[3.65vw] rounded-full"
+                      />
                       <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
-                        {donate.isAnonymous ? "Аноним" : "fupir"}
+                        {donate.user.username}
                       </span>
                       <div className="text-white text-[1.04vw] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {(() => {
                           const formattedTime = formatDonationTime(
-                            donate.createdDateUtc
+                            donate.createdAt
                           );
                           if (typeof formattedTime === "string") {
                             return (
@@ -225,7 +229,7 @@ const LastDonations: React.FC = () => {
               .filter((_, index) => index % 3 === 2)
               .map((donate, index) => (
                 <div
-                  key={donate.id.timestamp}
+                  key={donate.id}
                   className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[10px] self-stretch rounded-[0.83vw] ${
                     index % 2 === 0
                       ? "bg-white/5"
@@ -234,14 +238,18 @@ const LastDonations: React.FC = () => {
                 >
                   <div className="w-full flex justify-between items-center">
                     <div className="flex items-center gap-3 justify-center">
-                      <img src="" alt="" className="h-[3.65vw] w-[3.65vw]" />
+                      <img
+                        src={donate.user.avatarUrl}
+                        alt={donate.user.username}
+                        className="h-[3.65vw] w-[3.65vw] rounded-full"
+                      />
                       <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
-                        {donate.isAnonymous ? "Аноним" : "fupir"}
+                        {donate.user.username}
                       </span>
                       <div className="text-white text-[1.04vw] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
                         {(() => {
                           const formattedTime = formatDonationTime(
-                            donate.createdDateUtc
+                            donate.createdAt
                           );
                           if (typeof formattedTime === "string") {
                             return (

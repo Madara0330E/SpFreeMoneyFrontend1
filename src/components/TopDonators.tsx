@@ -1,21 +1,18 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+interface User {
+  id: string;
+  username: string;
+  avatarUrl: string;
+}
+
 interface Donate {
-  id: {
-    timestamp: number;
-    creationTime: string;
-  };
-  userId: {
-    timestamp: number;
-    creationTime: string;
-  };
+  id: string;
   amount: number;
   message: string;
-  isAnonymous: boolean;
-  paymentCode: string | null;
-  paidDateUtc: string | null;
-  createdDateUtc: string;
+  user: User;
+  createdAt: string;
 }
 
 interface DonatesResponse {
@@ -57,7 +54,7 @@ export default function TopDonators() {
       <div className="w-full flex flex-col gap-4">
         {donates.slice(0, 3).map((donate, index) => (
           <div
-            key={donate.id.timestamp}
+            key={donate.id}
             className={`w-full flex flex-col gap-4 p-[1.25vw] items-start self-stretch rounded-[0.83vw] ${
               index === 0
                 ? "border border-[#6563EE] bg-[radial-gradient(539.32%_212.31%_at_91.61%_10.09%,rgba(101,99,238,0.4)_0%,rgba(101,99,238,0.16)_41.83%,rgba(101,99,238,0.4)_100%)]"
@@ -70,20 +67,20 @@ export default function TopDonators() {
                   #{index + 1}
                 </span>
                 <div className="flex items-center gap-3 w-full">
-                  <img src="" alt="" className="h-[3.65vw] w-[3.65vw]" />
+                  <img
+                    src={donate.user.avatarUrl}
+                    alt={donate.user.username}
+                    className="h-[3.65vw] w-[3.65vw] rounded-full"
+                  />
                   <span className="text-white text-[1.67vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
-                    {donate.isAnonymous ? "Аноним" : "Пользователь"}
+                    {donate.user.username}
                   </span>
                 </div>
               </div>
 
               <div className="flex items-center gap-3 w-full justify-end">
                 <span className="text-white text-center text-[1.67vw] font-[600] leading-normal font-raleway font-numeric [font-variant-numeric:lining-nums_proportional-nums]">
-                  {
-                    donates.filter(
-                      (d) => d.userId.timestamp === donate.userId.timestamp
-                    ).length
-                  }{" "}
+                  {donates.filter((d) => d.user.id === donate.user.id).length}{" "}
                   доната
                 </span>
                 <svg
@@ -126,7 +123,7 @@ export default function TopDonators() {
                         />
                       </svg>
                       <span className="text-white text-[1.04vw] opacity-40 font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums]">
-                        {new Date(donate.createdDateUtc).toLocaleString("ru-RU")}
+                        {new Date(donate.createdAt).toLocaleString("ru-RU")}
                       </span>
                     </div>
                     <div className="text-white w-[8.33vw] text-[1.25vw] font-[600] leading-normal font-raleway [font-variant-numeric:lining-nums_proportional-nums] text-right pr-0">
