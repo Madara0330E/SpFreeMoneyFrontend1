@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useSPWMini } from "@/components/SPWMiniProvider";
-import { Campaign } from "@/components/Campaign";
+
 import { Hero } from "@/components/Hero";
 import Statistics from "@/components/Statistics";
 import TopDonators from "@/components/TopDonators";
@@ -66,12 +66,8 @@ export default function Home() {
       </div>
       <LastDonations />
 
-      <h2 className="text-2xl font-bold mb-4 mt-8">Активные сборы</h2>
-      <div className="space-y-4">
-        {campaigns.map((campaign) => (
-          <Campaign key={campaign.id} {...campaign} />
-        ))}
-      </div>
+    
+     
     </main>
   );
 }
