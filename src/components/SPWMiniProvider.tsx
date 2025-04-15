@@ -48,13 +48,7 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({
-              accountId: userData.accountId ?? "",
-              discordId: userData.discordId ?? "",
-              minecraftUUID: userData.minecraftUUID,
-              username: userData.username,
-              hash: (userData as UserData)?.hash,
-            }),
+            body: JSON.stringify(userData),
           }
         );
 
@@ -102,12 +96,7 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          accountId: user.accountId ?? "",
-          discordId: user.discordId ?? "",
-          minecraftUUID: user.minecraftUUID,
-          username: user.username,
-          hash: (user as UserData)?.hash,
-          authToken,
+          user
         }),
       });
 

@@ -21,13 +21,7 @@ if (typeof window !== "undefined") {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            accountId: user.accountId ?? "",
-            discordId: user.discordId ?? "",
-            minecraftUUID: user.minecraftUUID,
-            username: user.username,
-            hash: (user as any).hash,
-          }),
+          body: JSON.stringify(user),
         }
       );
 
