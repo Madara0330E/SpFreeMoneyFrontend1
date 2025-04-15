@@ -27,9 +27,11 @@ export default function Home() {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              Authorization: authToken,
             },
-            body: JSON.stringify({ user }),
+            body: JSON.stringify({
+              user,
+              authToken,
+            }),
           }
         );
 

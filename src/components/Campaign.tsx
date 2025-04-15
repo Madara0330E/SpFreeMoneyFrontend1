@@ -40,10 +40,10 @@ export function Campaign({
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: authToken,
           },
           body: JSON.stringify({
-            user: user,
+            user,
+            authToken,
             amount: 10,
             comment: "Удачи!",
             isAnonymous: true,

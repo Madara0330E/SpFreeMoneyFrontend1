@@ -48,7 +48,7 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(userData), 
+            body: JSON.stringify(userData),
           }
         );
 
@@ -94,9 +94,11 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: authToken,
         },
-        body: JSON.stringify(user), // Отправляем весь объект пользователя в теле запроса
+        body: JSON.stringify({
+          user,
+          authToken, // Отправляем токен в теле запроса, а не в заголовке
+        }),
       });
 
       const data = await response.json();
