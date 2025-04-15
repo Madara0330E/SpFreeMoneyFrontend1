@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { useSPWMini } from "@/components/SPWMiniProvider";
+import { useSPWMini } from "./SPWMiniProvider";
 
 interface CampaignProps {
   id: string;
@@ -11,7 +13,6 @@ interface CampaignProps {
     username: string;
     avatarUrl: string;
   };
-  authToken: string;
 }
 
 export function Campaign({
@@ -21,12 +22,16 @@ export function Campaign({
   currentAmount,
   targetAmount,
   owner,
-  authToken,
 }: CampaignProps) {
-  const { openPayment } = useSPWMini();
+  const { openPayment, authToken } = useSPWMini();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleDonate = async () => {
+    if (!authToken) {
+      alert("Ошибка авторизации. Пожалуйста, обновите страницу.");
+      return;
+    }
+
     try {
       setIsLoading(true);
       const res = await fetch(
@@ -36,6 +41,7 @@ export function Campaign({
           headers: {
             "Content-Type": "application/json",
             Authorization: authToken,
+            "Access-Control-Allow-Origin": "*",
           },
           body: JSON.stringify({
             amount: 10,
@@ -77,7 +83,7 @@ export function Campaign({
         <div>Автор: {owner.username}</div>
         <button
           onClick={handleDonate}
-          disabled={isLoading}
+          disabled={isLoading || !authToken}
           className="mt-2 bg-green-500 hover:bg-green-600 text-black font-bold py-2 px-4 rounded-lg disabled:opacity-50"
         >
           {isLoading ? "Загрузка..." : "💰 Помочь 10 монет"}

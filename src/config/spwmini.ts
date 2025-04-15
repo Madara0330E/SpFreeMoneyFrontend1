@@ -7,29 +7,56 @@ let spwmini: SPWMini | null = null;
 // Инициализируем SPWMini только на клиенте
 if (typeof window !== "undefined") {
   spwmini = new SPWMini("81a3cd94-1a9f-45f1-82ee-e39dfba822df", {
-    autoinit: false, // Отключаем автоинициализацию
+    autoinit: true, // Включаем автоинициализацию
     customFetch: fetch,
   });
 
   // Обработчики событий
-  spwmini.on("initResponse", (user) => {
+  spwmini.on("initResponse", async (user) => {
     console.log(`Пользователь авторизован: ${user.username}`);
+
+    try {
+      // Авторизация и получение токена
+      const authRes = await fetch(
+        "https://money.chasman.engineer/api/validate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({
+            accountId: user.accountId ?? "",
+            discordId: user.discordId ?? "",
+            minecraftUUID: user.minecraftUUID,
+            username: user.username,
+            hash: (user as any).hash,
+          }),
+        }
+      );
+
+      const authData = await authRes.json();
+
+      if (authData.authToken) {
+        // Сохраняем токен в localStorage
+        localStorage.setItem("authToken", authData.authToken);
+        console.log("Токен авторизации сохранен");
+      } else {
+        console.error("Не удалось получить токен авторизации");
+      }
+    } catch (error) {
+      console.error("Ошибка при авторизации:", error);
+    }
   });
 
   spwmini.on("initError", (message) => {
     console.error(`Ошибка авторизации: ${message}`);
+    localStorage.removeItem("authToken"); // Удаляем токен при ошибке
   });
 
   spwmini.on("ready", () => {
     console.log("Приложение готово к работе");
   });
-
-  // Инициализируем вручную после создания
-  try {
-    spwmini.initialize();
-  } catch (error) {
-    console.error("Ошибка при инициализации SPWMini:", error);
-  }
 }
 
 export default spwmini;
