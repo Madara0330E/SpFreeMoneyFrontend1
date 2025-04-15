@@ -55,7 +55,7 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-[#0f0f0f] text-white p-20">
+    <main className="min-h-screen bg-[#0f0f0f] text-white p-3">
       <div className="flex justify-between w-ful gap-[16px] items-center">
         <Hero />
         <Statistics />
