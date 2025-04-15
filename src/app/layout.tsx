@@ -1,4 +1,5 @@
 import { SPWMiniProvider } from "@/components/SPWMiniProvider";
+import { AuthProvider } from "../contexts/AuthContext";
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import { Header } from "@/components/Header";
@@ -31,10 +32,12 @@ export default function RootLayout({
         />
       </head>
       <body className={`${raleway.variable} antialiased`}>
-        <SPWMiniProvider>
-          <Header />
-          {children}
-        </SPWMiniProvider>
+        <AuthProvider>
+          <SPWMiniProvider>
+            <Header />
+            {children}
+          </SPWMiniProvider>
+        </AuthProvider>
       </body>
     </html>
   );
