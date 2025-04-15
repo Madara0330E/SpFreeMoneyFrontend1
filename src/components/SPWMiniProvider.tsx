@@ -102,7 +102,7 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
         headers: {
           "Content-Type": "application/json",
           Authorization: authToken,
-          "Access-Control-Allow-Origin": "*",
+         
         },
         body: JSON.stringify({
           accountId: user.accountId,

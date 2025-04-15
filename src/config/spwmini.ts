@@ -4,26 +4,26 @@ import SPWMini from "spwmini/client";
 
 let spwmini: SPWMini | null = null;
 
-// Инициализируем SPWMini только на клиенте
+
 if (typeof window !== "undefined") {
   spwmini = new SPWMini("81a3cd94-1a9f-45f1-82ee-e39dfba822df", {
-    autoinit: true, // Включаем автоинициализацию
+    autoinit: true, 
     customFetch: fetch,
   });
 
-  // Обработчики событий
+ 
   spwmini.on("initResponse", async (user) => {
     console.log(`Пользователь авторизован: ${user.username}`);
 
     try {
-      // Авторизация и получение токена
+   
       const authRes = await fetch(
         "https://money.chasman.engineer/api/validate",
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
+            
           },
           body: JSON.stringify({
             accountId: user.accountId ?? "",
@@ -38,7 +38,7 @@ if (typeof window !== "undefined") {
       const authData = await authRes.json();
 
       if (authData.authToken) {
-        // Сохраняем токен в localStorage
+      
         localStorage.setItem("authToken", authData.authToken);
         console.log("Токен авторизации сохранен");
       } else {
@@ -51,7 +51,7 @@ if (typeof window !== "undefined") {
 
   spwmini.on("initError", (message) => {
     console.error(`Ошибка авторизации: ${message}`);
-    localStorage.removeItem("authToken"); // Удаляем токен при ошибке
+    localStorage.removeItem("authToken"); 
   });
 
   spwmini.on("ready", () => {
