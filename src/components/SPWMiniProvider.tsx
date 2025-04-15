@@ -48,7 +48,7 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(userData),
+            body: JSON.stringify(userData), // Отправляем весь объект пользователя
           }
         );
 
@@ -96,7 +96,8 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          user
+          user, // Отправляем весь объект пользователя
+          authToken,
         }),
       });
 
