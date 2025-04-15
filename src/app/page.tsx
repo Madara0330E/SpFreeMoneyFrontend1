@@ -12,7 +12,6 @@ import LastDonations from "@/components/LastDonations";
 export default function Home() {
   const { user, authToken } = useSPWMini();
   const [campaigns, setCampaigns] = useState<any[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -45,8 +44,6 @@ export default function Home() {
       } catch (e) {
         console.error(e);
         setError("Ошибка при загрузке данных");
-      } finally {
-        setIsLoading(false);
       }
     };
 
@@ -55,10 +52,6 @@ export default function Home() {
 
   if (error) {
     return <div className="p-4 text-red-500">{error}</div>;
-  }
-
-  if (isLoading) {
-    return <div className="p-4">Загрузка...</div>;
   }
 
   return (

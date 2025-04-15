@@ -24,7 +24,6 @@ export function Campaign({
   owner,
 }: CampaignProps) {
   const { openPayment, authToken, user } = useSPWMini();
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleDonate = async () => {
     if (!authToken || !user) {
@@ -33,7 +32,6 @@ export function Campaign({
     }
 
     try {
-      setIsLoading(true);
       const res = await fetch(
         `https://money.chasman.engineer/api/campaigns/${id}/donate`,
         {
@@ -62,8 +60,6 @@ export function Campaign({
     } catch (e) {
       console.error(e);
       alert("Произошла ошибка при отправке пожертвования.");
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -83,10 +79,10 @@ export function Campaign({
         <div>Автор: {owner.username}</div>
         <button
           onClick={handleDonate}
-          disabled={isLoading || !authToken}
+          disabled={!authToken}
           className="mt-2 bg-green-500 hover:bg-green-600 text-black font-bold py-2 px-4 rounded-lg disabled:opacity-50"
         >
-          {isLoading ? "Загрузка..." : "💰 Помочь 10 монет"}
+          💰 Помочь 10 монет
         </button>
       </div>
     </div>
