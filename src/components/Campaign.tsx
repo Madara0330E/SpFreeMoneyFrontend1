@@ -23,11 +23,11 @@ export function Campaign({
   targetAmount,
   owner,
 }: CampaignProps) {
-  const { openPayment, authToken } = useSPWMini();
+  const { openPayment, authToken, user } = useSPWMini();
   const [isLoading, setIsLoading] = useState(false);
 
   const handleDonate = async () => {
-    if (!authToken) {
+    if (!authToken || !user) {
       alert("Ошибка авторизации. Пожалуйста, обновите страницу.");
       return;
     }
@@ -41,9 +41,9 @@ export function Campaign({
           headers: {
             "Content-Type": "application/json",
             Authorization: authToken,
-            "Access-Control-Allow-Origin": "*",
           },
           body: JSON.stringify({
+            user: user,
             amount: 10,
             comment: "Удачи!",
             isAnonymous: true,

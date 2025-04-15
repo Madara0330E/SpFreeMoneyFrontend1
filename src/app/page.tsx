@@ -24,10 +24,12 @@ export default function Home() {
         const campaignRes = await fetch(
           "https://money.chasman.engineer/api/campaigns",
           {
+            method: "POST",
             headers: {
+              "Content-Type": "application/json",
               Authorization: authToken,
-              "Access-Control-Allow-Origin": "*",
             },
+            body: JSON.stringify({ user }),
           }
         );
 

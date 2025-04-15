@@ -47,15 +47,8 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
-              "Access-Control-Allow-Origin": "*",
             },
-            body: JSON.stringify({
-              accountId: userData.accountId ?? "",
-              discordId: userData.discordId ?? "",
-              minecraftUUID: userData.minecraftUUID,
-              username: userData.username,
-              hash: (userData as UserData)?.hash,
-            }),
+            body: JSON.stringify(userData), 
           }
         );
 
@@ -102,15 +95,8 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
         headers: {
           "Content-Type": "application/json",
           Authorization: authToken,
-         
         },
-        body: JSON.stringify({
-          accountId: user.accountId,
-          discordId: user.discordId,
-          minecraftUUID: user.minecraftUUID,
-          username: user.username,
-          hash: (user as UserData)?.hash,
-        }),
+        body: JSON.stringify(user), // Отправляем весь объект пользователя в теле запроса
       });
 
       const data = await response.json();
