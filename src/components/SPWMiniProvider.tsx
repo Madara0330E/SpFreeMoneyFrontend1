@@ -48,7 +48,13 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(userData),
+            body: JSON.stringify({
+              accountId: userData.accountId ?? "",
+              discordId: userData.discordId ?? "",
+              minecraftUUID: userData.minecraftUUID,
+              username: userData.username,
+              hash: (userData as UserData)?.hash,
+            }),
           }
         );
 
@@ -96,8 +102,12 @@ export function SPWMiniProvider({ children }: { children: React.ReactNode }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          user,
-          authToken, // Отправляем токен в теле запроса, а не в заголовке
+          accountId: user.accountId ?? "",
+          discordId: user.discordId ?? "",
+          minecraftUUID: user.minecraftUUID,
+          username: user.username,
+          hash: (user as UserData)?.hash,
+          authToken,
         }),
       });
 

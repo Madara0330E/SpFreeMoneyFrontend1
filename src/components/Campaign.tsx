@@ -42,7 +42,11 @@ export function Campaign({
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            user,
+            accountId: user.accountId ?? "",
+            discordId: user.discordId ?? "",
+            minecraftUUID: user.minecraftUUID,
+            username: user.username,
+            hash: (user as any).hash,
             authToken,
             amount: 10,
             comment: "Удачи!",
