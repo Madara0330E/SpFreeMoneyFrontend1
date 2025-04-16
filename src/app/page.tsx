@@ -56,18 +56,17 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#0f0f0f] text-white p-3">
-      <div className="flex justify-between w-ful gap-[16px] items-center">
+      <div className="flex justify-between w-ful gap-[16px] mt-[10.417vw] items-center">
         <Hero />
         <Statistics />
       </div>
-      <div className="flex justify-between w-ful gap-[16px] mt-[200px] ">
+      <div className="flex justify-between w-ful gap-[16px] mt-[10.417vw] ">
         <TopDonators />
         <TopConsumers />
       </div>
-      <LastDonations />
-
-    
-     
+      <div className="mt-[10.417vw]">
+        <LastDonations />
+      </div>
     </main>
   );
 }
