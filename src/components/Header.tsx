@@ -1,40 +1,57 @@
+"use client";
+
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <header className="flex items-center h-[3vw] bg-[#0f0f0f] px-[1.04vw]">
       <nav className="flex items-center justify-between mt-[2.292vw] w-full relative">
         <div className="absolute left-1/2 -translate-x-1/2 flex gap-[6.667vw]">
-          <a
-            href="#"
-            className="text-white font-raleway text-[1.67vw] font-semibold leading-none"
+          <Link
+            href="/"
+            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+              pathname === "/" ? "text-white" : "text-[#808080]"
+            }`}
           >
             Главная
-          </a>
-          <a
-            href="#"
-            className="text-[#808080] font-raleway text-[1.67vw] font-semibold leading-none"
+          </Link>
+          <Link
+            href="/tops"
+            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+              pathname === "/tops" ? "text-white" : "text-[#808080]"
+            }`}
           >
             Топы
-          </a>
-          <a
-            href="#"
-            className="text-[#808080] font-raleway text-[1.67vw] font-semibold leading-none"
+          </Link>
+          <Link
+            href="/history"
+            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+              pathname === "/history" ? "text-white" : "text-[#808080]"
+            }`}
           >
             История
-          </a>
-          <a
-            href="#"
-            className="text-[#808080] font-raleway text-[1.67vw] font-semibold leading-none"
+          </Link>
+          <Link
+            href="/fees"
+            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+              pathname === "/fees" ? "text-white" : "text-[#808080]"
+            }`}
           >
             Сборы
-          </a>
+          </Link>
         </div>
         <div className="ml-auto">
-          <a
-            href="#"
-            className="text-white font-raleway text-[1.67vw] font-semibold leading-none"
+          <Link
+            href="/profile"
+            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+              pathname === "/profile" ? "text-white" : "text-[#808080]"
+            }`}
           >
             fupir
-          </a>
+          </Link>
         </div>
       </nav>
     </header>
