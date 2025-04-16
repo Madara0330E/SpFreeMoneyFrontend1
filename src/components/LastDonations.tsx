@@ -87,7 +87,7 @@ const LastDonations: React.FC = () => {
   const displayedDonates = donates.slice(0, 6);
 
   return (
-    <div className="flex flex-col gap-[10px]">
+    <div className="flex flex-col gap-[0.833vw]">
       <div className="w-full flex justify-center items-center">
         <p className="text-right text-[2.19vw] font-[600] leading-normal mb-4 font-raleway text-white">
           Последние донаты
@@ -107,21 +107,21 @@ const LastDonations: React.FC = () => {
           <p className="text-white text-[1.25vw]">Нет донатов</p>
         </div>
       ) : (
-        <div className="w-full flex justify-center gap-[10px] items-center">
-          <div className="flex-col w-full flex gap-[10px] max-w-[32.73vw] items-center">
+        <div className="w-full flex justify-center gap-[0.833vw] items-center max-w-[99.844vw]">
+          <div className="flex-col w-full flex gap-[0.833vw] max-w-[32.73vw] items-center">
             {displayedDonates
               .filter((_, index) => index % 3 === 0)
               .map((donate, index) => (
                 <div
                   key={donate.id}
-                  className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[10px] self-stretch rounded-[0.83vw] ${
+                  className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[0.833vw] self-stretch rounded-[0.83vw] ${
                     index % 2 === 0
                       ? "bg-white/5"
                       : "border border-[#6563EE] bg-[radial-gradient(539.32%_212.31%_at_91.61%_10.09%,_rgba(101,99,238,0.4)_0%,_rgba(101,99,238,0.16)_41.83%,_rgba(101,99,238,0.4)_100%)]"
                   }`}
                 >
                   <div className="w-full flex justify-between items-center">
-                    <div className="flex items-center gap-3 justify-center">
+                    <div className="flex items-center gap-[0.625vw] justify-center">
                       <img
                         src={donate.user.avatarUrl}
                         alt={donate.user.username}
@@ -166,20 +166,20 @@ const LastDonations: React.FC = () => {
                 </div>
               ))}
           </div>
-          <div className="flex-col w-full flex max-w-[32.73vw] gap-[10px] items-center">
+          <div className="flex-col w-full flex max-w-[32.73vw] gap-[0.833vw] items-center">
             {displayedDonates
               .filter((_, index) => index % 3 === 1)
               .map((donate, index) => (
                 <div
                   key={donate.id}
-                  className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[10px] self-stretch rounded-[0.83vw] ${
+                  className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[0.833vw] self-stretch rounded-[0.83vw] ${
                     index % 2 === 0
                       ? "border border-[#6563EE] bg-[radial-gradient(539.32%_212.31%_at_91.61%_10.09%,_rgba(101,99,238,0.4)_0%,_rgba(101,99,238,0.16)_41.83%,_rgba(101,99,238,0.4)_100%)]"
                       : "bg-white/5"
                   }`}
                 >
                   <div className="w-full flex justify-between items-center">
-                    <div className="flex items-center gap-3 justify-center">
+                    <div className="flex items-center gap-[0.625vw] justify-center">
                       <img
                         src={donate.user.avatarUrl}
                         alt={donate.user.username}
@@ -224,20 +224,20 @@ const LastDonations: React.FC = () => {
                 </div>
               ))}
           </div>
-          <div className="flex-col w-full max-w-[32.73vw] flex gap-4 items-center">
+          <div className="flex-col w-full max-w-[32.73vw] flex gap-[0.833vw] items-center">
             {displayedDonates
               .filter((_, index) => index % 3 === 2)
               .map((donate, index) => (
                 <div
                   key={donate.id}
-                  className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[10px] self-stretch rounded-[0.83vw] ${
+                  className={`flex max-w-[32.73vw] w-full p-[1.25vw] flex-col items-start gap-[0.833vw] self-stretch rounded-[0.83vw] ${
                     index % 2 === 0
                       ? "bg-white/5"
                       : "border border-[#6563EE] bg-[radial-gradient(539.32%_212.31%_at_91.61%_10.09%,_rgba(101,99,238,0.4)_0%,_rgba(101,99,238,0.16)_41.83%,_rgba(101,99,238,0.4)_100%)]"
                   }`}
                 >
                   <div className="w-full flex justify-between items-center">
-                    <div className="flex items-center gap-3 justify-center">
+                    <div className="flex items-center gap-[0.625vw] justify-center">
                       <img
                         src={donate.user.avatarUrl}
                         alt={donate.user.username}

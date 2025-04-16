@@ -2,7 +2,7 @@ export function Header() {
   return (
     <header className="flex items-center h-[3vw] bg-[#0f0f0f] px-[1.04vw]">
       <nav className="flex items-center justify-between mt-[2.29vw] w-full relative">
-        <div className="absolute left-1/2 -translate-x-1/2 flex gap-[1.67vw]">
+        <div className="absolute left-1/2 -translate-x-1/2 flex gap-[6.667vw]">
           <a
             href="#"
             className="text-white font-raleway text-[1.67vw] font-semibold leading-none"

@@ -58,7 +58,7 @@ const Statistics: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="w-full flex justify-between max-w-[39.22vw] h-[7.19vw] mt-4">
+      <div className="w-full flex justify-between max-w-[39.22vw] h-[7.19vw] mt-[0.833vw]">
         <div className="flex w-full max-w-[11.25vw] h-[7.19vw] items-center justify-center rounded-[0.52vw] bg-white">
           <img
             src="img/Statick/Jeckpot.png"
