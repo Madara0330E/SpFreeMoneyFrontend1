@@ -35,7 +35,7 @@ export default function RootLayout({
         <AuthProvider>
           <SPWMiniProvider>
             <Header />
-            {children}
+            <main className="pt-[3vw]">{children}</main>
           </SPWMiniProvider>
         </AuthProvider>
       </body>

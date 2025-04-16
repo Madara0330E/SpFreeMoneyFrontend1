@@ -7,12 +7,12 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="flex items-center h-[3vw] bg-[#0f0f0f] px-[1.04vw]">
-      <nav className="flex items-center justify-between mt-[2.292vw] w-full relative">
-        <div className="absolute left-1/2 -translate-x-1/2 flex gap-[6.667vw]">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0f0f0f] h-[3vw]">
+      <nav className="flex items-center justify-between h-full px-[1.04vw]">
+        <div className="flex items-center gap-[6.667vw] absolute left-1/2 -translate-x-1/2">
           <Link
             href="/"
-            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+            className={`font-raleway text-[1.67vw] font-semibold ${
               pathname === "/" ? "text-white" : "text-[#808080]"
             }`}
           >
@@ -20,7 +20,7 @@ export function Header() {
           </Link>
           <Link
             href="/tops"
-            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+            className={`font-raleway text-[1.67vw] font-semibold ${
               pathname === "/tops" ? "text-white" : "text-[#808080]"
             }`}
           >
@@ -28,7 +28,7 @@ export function Header() {
           </Link>
           <Link
             href="/history"
-            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+            className={`font-raleway text-[1.67vw] font-semibold ${
               pathname === "/history" ? "text-white" : "text-[#808080]"
             }`}
           >
@@ -36,7 +36,7 @@ export function Header() {
           </Link>
           <Link
             href="/fees"
-            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+            className={`font-raleway text-[1.67vw] font-semibold ${
               pathname === "/fees" ? "text-white" : "text-[#808080]"
             }`}
           >
@@ -46,7 +46,7 @@ export function Header() {
         <div className="ml-auto">
           <Link
             href="/profile"
-            className={`font-raleway text-[1.67vw] font-semibold leading-none ${
+            className={`font-raleway text-[1.67vw] font-semibold ${
               pathname === "/profile" ? "text-white" : "text-[#808080]"
             }`}
           >
