@@ -102,7 +102,7 @@ export default function TopDonators() {
             </div>
 
             <div className="h-[0.05vw] self-stretch bg-white opacity-10"></div>
-            <div className="flex justify-between w-full  items-center max-w-[45.104vw]">
+            <div className="flex justify-between w-full gap-[0.833vw] items-center max-w-[45.104vw]">
               <div className="flex flex-col max-w-[43vw] gap-3 w-full">
                 <div className="flex items-center gap-3 justify-between w-full">
                   <div className="flex items-center gap-3 w-full justify-between">
