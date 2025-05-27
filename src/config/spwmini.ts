@@ -5,7 +5,7 @@ import SPWMini from "spwmini/client";
 let spwmini: SPWMini | null = null;
 
 if (typeof window !== "undefined") {
-  spwmini = new SPWMini("5689b4f1-e62e-4297-957e-a941bf8a9de6", {
+  spwmini = new SPWMini("93160870-da3d-44c5-bf30-748abcf83203", {
     autoinit: true,
     customFetch: fetch,
   });
